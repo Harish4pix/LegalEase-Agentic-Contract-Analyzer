@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 from io import BytesIO
+from pathlib import Path
 import re
 
 from dotenv import load_dotenv
@@ -157,7 +158,7 @@ async def admin_add_directory(kind: str, request: DirectoryEntry) -> dict:
 
 
 # In production, FastAPI serves the Vite build as a single deployable service.
-frontend_dist = settings.data_dir.parents[2] / "dist"
+frontend_dist = Path(__file__).resolve().parents[2] / "dist"
 
 
 @app.get("/{full_path:path}", include_in_schema=False)
