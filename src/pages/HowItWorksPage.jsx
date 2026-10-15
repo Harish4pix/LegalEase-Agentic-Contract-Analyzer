@@ -1,0 +1,20 @@
+import { ArrowDown, ArrowUpRight, Bot, CheckCircle2, FileOutput, FileSearch, FileText, Gauge, Lightbulb, MessageSquareText, ShieldAlert, Sparkles } from 'lucide-react'
+import { AppLink } from '../components/SiteLayout.jsx'
+
+const AGENTS = [
+  [FileText, 'Document ingestion', 'Validates the file, extracts readable contract text, and removes formatting noise without interpreting the agreement.', 'Clean contract text'],
+  [FileSearch, 'Clause segmentation', 'Maps headings and provisions into reviewable units while preserving the original clause language.', 'Structured clauses'],
+  [ShieldAlert, 'Risk analysis', 'Looks for legal and commercial exposure, missing safeguards, one-sided language, and unusual obligations.', 'Risk findings'],
+  [Gauge, 'Risk calibration', 'Normalizes every finding onto a consistent 0–100 scale and assigns low, medium, or high severity.', 'Comparable scores'],
+  [Lightbulb, 'Recommendation review', 'Checks that each issue includes a specific clarification, safeguard, or negotiation action.', 'Practical next steps'],
+  [FileOutput, 'Report compilation', 'Builds an executive summary and a shareable PDF with evidence, recommendations, and disclaimers.', 'Complete report'],
+]
+
+export default function HowItWorksPage({ navigate }) {
+  return <main><section className="page-hero"><div><span className="hero-kicker"><Sparkles size={16} /> Transparent by design</span><h1>How six agents turn a contract into clear decisions</h1><p>LegalEase does not send a document into one opaque prompt. It coordinates focused steps with structured handoffs from extraction to final report.</p></div><div className="page-hero-visual pipeline-visual"><Bot size={36} /><span>Agent orchestrator</span><div>{['Extract', 'Review', 'Score', 'Report'].map((item) => <b key={item}>{item}</b>)}</div></div></section>
+    <section className="section process-section"><div className="section-heading left"><span className="section-tag">THE PIPELINE</span><h2>A focused responsibility at every stage</h2><p>Each output becomes the next agent’s input, keeping tasks narrow and results easier to inspect.</p></div><div className="process-list">{AGENTS.map(([Icon, title, copy, output], index) => <div className="process-item" key={title}><span className="process-number">0{index + 1}</span><div className="process-icon"><Icon /></div><div className="process-copy"><h3>{title}</h3><p>{copy}</p></div><div className="process-output"><small>OUTPUT</small><b><CheckCircle2 size={16} /> {output}</b></div>{index < AGENTS.length - 1 && <ArrowDown className="process-arrow" />}</div>)}</div></section>
+    <section className="section control-section"><div className="control-panel"><div><span className="section-tag light">QUALITY CONTROLS</span><h2>AI where it helps.<br />Rules where they matter.</h2><p>Model reasoning is combined with deterministic file validation, score calibration, contract-only chat boundaries, and explicit legal disclaimers.</p></div><ul><li><CheckCircle2 /> Original contract text remains visible beside findings</li><li><CheckCircle2 /> Every score is normalized to the same thresholds</li><li><CheckCircle2 /> Chat answers stay grounded in the active agreement</li><li><CheckCircle2 /> Off-topic prompts are refused before model generation</li></ul></div></section>
+    <section className="section output-section"><div className="section-heading"><span className="section-tag">ONE REVIEW, FOUR OUTPUTS</span><h2>Everything needed to continue the conversation</h2></div><div className="output-grid">{[[Gauge, 'Risk dashboard'], [FileSearch, 'Clause findings'], [MessageSquareText, 'Contract assistant'], [FileOutput, 'PDF report']].map(([Icon, title]) => <article key={title}><Icon /><h3>{title}</h3><p>Structured, readable, and connected to the same contract analysis.</p></article>)}</div></section>
+    <section className="bottom-cta"><div><span>See the pipeline in action</span><h2>Run the included sample contract.</h2></div><AppLink to="/analyzer" navigate={navigate} className="button button-orange">Open analyzer <ArrowUpRight /></AppLink></section>
+  </main>
+}

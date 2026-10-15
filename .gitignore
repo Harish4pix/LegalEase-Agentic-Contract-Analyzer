@@ -1,0 +1,11 @@
+.env
+.venv/
+venv/
+node_modules/
+dist/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+backend/data/analyses/*.json
+backend/data/admin_state.json
+!backend/data/analyses/.gitkeep
