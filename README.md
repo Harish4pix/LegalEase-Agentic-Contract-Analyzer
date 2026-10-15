@@ -103,7 +103,7 @@ Copy `.env.example` to `.env` if the setup script did not do it.
 
 ```env
 LLM_PROVIDER=gemini
-LLM_MODEL=gemini-2.5-flash-lite
+LLM_MODEL=gemini-3.5-flash-lite
 GEMINI_API_KEY=your_key
 ```
 
