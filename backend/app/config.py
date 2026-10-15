@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 class Settings(BaseModel):
     app_name: str = "LegalEase"
     provider: str = os.getenv("LLM_PROVIDER", "demo").lower()
-    model: str = os.getenv("LLM_MODEL", "gemini-2.5-flash-lite")
+    model: str = os.getenv("LLM_MODEL", "gemini-3.5-flash-lite")
     gemini_api_key: str = os.getenv("GEMINI_API_KEY", "")
     groq_api_key: str = os.getenv("GROQ_API_KEY", "")
     ollama_base_url: str = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
